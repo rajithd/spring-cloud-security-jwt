@@ -1,0 +1,1 @@
+# spring-cloud-security-jwt-aws-fargate
