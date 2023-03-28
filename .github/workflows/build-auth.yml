@@ -1,0 +1,33 @@
+name: Build Auth Service
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - "auth-service/**"
+  pull_request:
+    types: [ opened, synchronize, reopened ]
+
+jobs:
+  build:
+    name: Build Config Service
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        java: [ '17' ]
+
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+
+      - name: Setup Java
+        uses: actions/setup-java@v1
+          with:
+            java-version: 17
+
+      - name: Build
+        working-directory: ./auth-service
+        run: ./gradlew :auth-service:build
+
