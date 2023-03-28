@@ -1,0 +1,13 @@
+server:
+  port: 9297
+
+spring:
+  application:
+    name: config-server
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/rajithd/spring-cloud-security-config-server.git
+          clone-on-start: true
+          default-label: main
