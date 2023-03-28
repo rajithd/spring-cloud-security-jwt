@@ -28,6 +28,5 @@ jobs:
           java-version: 17
 
       - name: Build
-        working-directory: ./discovery-service
         run: ./gradlew :discovery-service:build
 

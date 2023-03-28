@@ -28,6 +28,5 @@ jobs:
           java-version: 17
 
       - name: Build
-        working-directory: ./auth-service
         run: ./gradlew :auth-service:build
 

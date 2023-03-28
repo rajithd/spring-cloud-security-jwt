@@ -28,6 +28,5 @@ jobs:
           java-version: 17
 
       - name: Build
-        working-directory: ./cars-service
         run: ./gradlew :cars-service:build
 

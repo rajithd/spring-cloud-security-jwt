@@ -28,6 +28,5 @@ jobs:
           java-version: 17
 
       - name: Build
-        working-directory: ./config-service
         run: ./gradlew :config-service:build
 
