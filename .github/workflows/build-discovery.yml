@@ -24,8 +24,8 @@ jobs:
 
       - name: Setup Java
         uses: actions/setup-java@v1
-          with:
-            java-version: 17
+        with:
+          java-version: 17
 
       - name: Build
         working-directory: ./discovery-service
