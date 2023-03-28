@@ -1,17 +1,17 @@
-name: Build Auth Service
+name: Build Cars Service
 
 on:
   push:
     branches:
       - main
     paths:
-      - "auth-service/**"
+      - "cars-service/**"
   pull_request:
     types: [ opened, synchronize, reopened ]
 
 jobs:
   build:
-    name: Build Auth Service
+    name: Build Cars Service
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -28,6 +28,6 @@ jobs:
             java-version: 17
 
       - name: Build
-        working-directory: ./auth-service
-        run: ./gradlew :auth-service:build
+        working-directory: ./cars-service
+        run: ./gradlew :cars-service:build
 

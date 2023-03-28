@@ -1,17 +1,17 @@
-name: Build Auth Service
+name: Build Discovery Service
 
 on:
   push:
     branches:
       - main
     paths:
-      - "auth-service/**"
+      - "discovery-service/**"
   pull_request:
     types: [ opened, synchronize, reopened ]
 
 jobs:
   build:
-    name: Build Auth Service
+    name: Build Disocvery Service
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -28,6 +28,6 @@ jobs:
             java-version: 17
 
       - name: Build
-        working-directory: ./auth-service
-        run: ./gradlew :auth-service:build
+        working-directory: ./discovery-service
+        run: ./gradlew :discovery-service:build
 
