@@ -31,24 +31,21 @@ public class AuthenticationFilter implements GatewayFilter {
 
         if (routerValidator.isSecured.test(request)) {
             if (this.isAuthMissing(request)) {
-                return this.onError(exchange, "Authorization header is missing in request", HttpStatus.UNAUTHORIZED);
+                return this.onError(exchange, HttpStatus.UNAUTHORIZED);
             }
 
             final String token = this.getAuthHeader(request);
 
             if (jwtUtil.isInvalid(token)) {
-                return this.onError(exchange, "Authorization header is invalid", HttpStatus.UNAUTHORIZED);
+                return this.onError(exchange, HttpStatus.FORBIDDEN);
             }
 
-            this.populateRequestWithHeaders(exchange, token);
+            this.updateRequest(exchange, token);
         }
         return chain.filter(exchange);
     }
 
-
-    /*PRIVATE*/
-
-    private Mono<Void> onError(ServerWebExchange exchange, String err, HttpStatus httpStatus) {
+    private Mono<Void> onError(ServerWebExchange exchange, HttpStatus httpStatus) {
         ServerHttpResponse response = exchange.getResponse();
         response.setStatusCode(httpStatus);
         return response.setComplete();
@@ -62,11 +59,10 @@ public class AuthenticationFilter implements GatewayFilter {
         return !request.getHeaders().containsKey("Authorization");
     }
 
-    private void populateRequestWithHeaders(ServerWebExchange exchange, String token) {
+    private void updateRequest(ServerWebExchange exchange, String token) {
         Claims claims = jwtUtil.getAllClaimsFromToken(token);
         exchange.getRequest().mutate()
-                .header("id", String.valueOf(claims.get("id")))
-                .header("role", String.valueOf(claims.get("role")))
+                .header("email", String.valueOf(claims.get("email")))
                 .build();
     }
 }
