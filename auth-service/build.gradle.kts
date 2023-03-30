@@ -48,7 +48,7 @@ dependencyManagement {
     }
 }
 
-tasks.create("docker", DockerBuildImage::class) {
+tasks.create("dockerBuild", DockerBuildImage::class) {
     inputDir.set(file("."))
     images.add("spring-cloud-security-jwt/auth-service")
 }
