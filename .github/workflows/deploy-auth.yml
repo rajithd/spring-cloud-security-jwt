@@ -43,7 +43,7 @@ jobs:
           REGISTRY: ${{ steps.login-ecr.outputs.registry }}
           REPOSITORY: spring-cloud-security-jwt-auth-service
           IMAGE_TAG: latest
-          run: |
-            cd auth-service
-            docker build -t $REGISTRY/$REPOSITORY:$IMAGE_TAG .
-            docker push $REGISTRY/$REPOSITORY:$IMAGE_TAG
+        run: |
+          cd auth-service
+          docker build -t $REGISTRY/$REPOSITORY:$IMAGE_TAG .
+          docker push $REGISTRY/$REPOSITORY:$IMAGE_TAG
