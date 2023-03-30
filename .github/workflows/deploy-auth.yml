@@ -1,11 +1,6 @@
 name: Deploy Auth Service
 
 on:
-  push:
-    branches:
-      - main
-    paths:
-      - "auth-service/**"
   pull_request:
     types: [ opened, synchronize, reopened ]
     paths:
