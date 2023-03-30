@@ -1,0 +1,54 @@
+name: Deploy Auth Service
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - "auth-service/**"
+  pull_request:
+    types: [ opened, synchronize, reopened ]
+    paths:
+      - "auth-service/**"
+
+jobs:
+  build:
+    name: Deploy Auth Service
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        java: [ '17' ]
+
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v2
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: us-east-1
+
+      - name: Setup Java
+        uses: actions/setup-java@v1
+        with:
+          java-version: 17
+
+      - name: Login to Amazon ECR
+        id: login-ecr
+        uses: aws-actions/amazon-ecr-login@v1
+
+      - name: Build
+        run: ./gradlew :auth-service:build
+
+      - name: Build, Tag and Push Docker Image
+        env:
+          REGISTRY: ${{ steps.login-ecr.outputs.registry }}
+          REPOSITORY: spring-cloud-security-jwt-auth-service
+          IMAGE_TAG: latest
+          run: |
+            cd auth-service
+            docker build -t $REGISTRY/$REPOSITORY:$IMAGE_TAG .
+            docker push $REGISTRY/$REPOSITORY:$IMAGE_TAG

@@ -1,17 +1,15 @@
-name: Build Gateway Service
+name: Deploy Config Service
 
 on:
   push:
     branches:
       - main
     paths:
-      - "gateway-service/**"
-  pull_request:
-    types: [ opened, synchronize, reopened ]
+      - "config-service/**"
 
 jobs:
   build:
-    name: Build Gateway Service
+    name: Deploy Config Service
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -28,5 +26,5 @@ jobs:
           java-version: 17
 
       - name: Build
-        run: ./gradlew :gateway-service:build
+        run: ./gradlew :config-service:build
 

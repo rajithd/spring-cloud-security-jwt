@@ -1,17 +1,14 @@
-name: Build Config Service
+name: Verify Auth Service
 
 on:
-  push:
-    branches:
-      - main
-    paths:
-      - "config-service/**"
   pull_request:
     types: [ opened, synchronize, reopened ]
+    paths:
+      - "auth-service/**"
 
 jobs:
   build:
-    name: Build Config Service
+    name: Verify Auth Service
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -28,5 +25,8 @@ jobs:
           java-version: 17
 
       - name: Build
-        run: ./gradlew :config-service:build
+        run: ./gradlew :auth-service:build
+
+      - name: Build Docker Image
+        run: ./gradlew :auth-service:docker
 

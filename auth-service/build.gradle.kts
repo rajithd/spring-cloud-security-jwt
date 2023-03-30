@@ -4,11 +4,14 @@ import com.rd.spring.dependencies.Dependencies.jwtApi
 import com.rd.spring.dependencies.Dependencies.jwtImpl
 import com.rd.spring.dependencies.Dependencies.jwtJackson
 import com.rd.spring.dependencies.Dependencies.lombok
+import com.bmuschko.gradle.docker.tasks.image.*
 
 plugins {
     java
     id("org.springframework.boot") version "3.0.5"
     id("io.spring.dependency-management") version "1.1.0"
+    id("com.bmuschko.docker-remote-api") version "9.3.0"
+    id("com.patdouble.awsecr") version "0.7.0"
 }
 
 group = "com.rd.spring"
@@ -43,4 +46,9 @@ dependencyManagement {
     imports {
         mavenBom("org.springframework.cloud:spring-cloud-dependencies:${property("springCloudVersion")}")
     }
+}
+
+tasks.create("dockerBuild", DockerBuildImage::class) {
+    inputDir.set(file("."))
+    images.add("spring-cloud-security-jwt/auth-service")
 }

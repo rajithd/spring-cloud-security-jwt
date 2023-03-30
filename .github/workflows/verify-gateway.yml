@@ -1,17 +1,14 @@
-name: Build Discovery Service
+name: Verify Gateway Service
 
 on:
-  push:
-    branches:
-      - main
-    paths:
-      - "discovery-service/**"
   pull_request:
     types: [ opened, synchronize, reopened ]
+    paths:
+      - "gateway-service/**"
 
 jobs:
   build:
-    name: Build Disocvery Service
+    name: Verify Gateway Service
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -28,5 +25,5 @@ jobs:
           java-version: 17
 
       - name: Build
-        run: ./gradlew :discovery-service:build
+        run: ./gradlew :gateway-service:build
 
