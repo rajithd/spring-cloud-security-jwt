@@ -1,4 +1,4 @@
-name: Build Config Service
+name: Deploy Config Service
 
 on:
   push:
@@ -9,7 +9,7 @@ on:
 
 jobs:
   build:
-    name: Build Config Service
+    name: Deploy Config Service
     runs-on: ubuntu-latest
     strategy:
       matrix:

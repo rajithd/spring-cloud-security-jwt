@@ -1,4 +1,4 @@
-name: Build Discovery Service
+name: Deploy Discovery Service
 
 on:
   push:
@@ -9,7 +9,7 @@ on:
 
 jobs:
   build:
-    name: Build Disocvery Service
+    name: Deploy Disocvery Service
     runs-on: ubuntu-latest
     strategy:
       matrix:

@@ -1,4 +1,4 @@
-name: Build Gateway Service
+name: Deploy Gateway Service
 
 on:
   push:
@@ -9,7 +9,7 @@ on:
 
 jobs:
   build:
-    name: Build Gateway Service
+    name: Deploy Gateway Service
     runs-on: ubuntu-latest
     strategy:
       matrix:

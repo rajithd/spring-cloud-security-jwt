@@ -1,4 +1,4 @@
-name: Build Config Service
+name: Verify Config Service
 
 on:
   pull_request:
@@ -8,7 +8,7 @@ on:
 
 jobs:
   build:
-    name: Build Config Service
+    name: Verify Config Service
     runs-on: ubuntu-latest
     strategy:
       matrix:

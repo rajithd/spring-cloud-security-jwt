@@ -1,4 +1,4 @@
-name: Build Cars Service
+name: Deploy Cars Service
 
 on:
   push:
@@ -9,7 +9,7 @@ on:
 
 jobs:
   build:
-    name: Build Cars Service
+    name: Deploy Cars Service
     runs-on: ubuntu-latest
     strategy:
       matrix:

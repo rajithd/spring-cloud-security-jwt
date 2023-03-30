@@ -1,4 +1,4 @@
-name: Build Auth Service
+name: Deploy Auth Service
 
 on:
   push:
@@ -9,7 +9,7 @@ on:
 
 jobs:
   build:
-    name: Build Auth Service
+    name: Deploy Auth Service
     runs-on: ubuntu-latest
     strategy:
       matrix:

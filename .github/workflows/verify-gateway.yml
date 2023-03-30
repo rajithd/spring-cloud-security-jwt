@@ -1,4 +1,4 @@
-name: Build Gateway Service
+name: Verify Gateway Service
 
 on:
   pull_request:
@@ -8,7 +8,7 @@ on:
 
 jobs:
   build:
-    name: Build Gateway Service
+    name: Verify Gateway Service
     runs-on: ubuntu-latest
     strategy:
       matrix:

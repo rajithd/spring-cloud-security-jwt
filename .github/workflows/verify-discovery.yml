@@ -1,4 +1,4 @@
-name: Build Discovery Service
+name: Verify Discovery Service
 
 on:
   pull_request:
@@ -8,7 +8,7 @@ on:
 
 jobs:
   build:
-    name: Build Disocvery Service
+    name: Verify Disocvery Service
     runs-on: ubuntu-latest
     strategy:
       matrix:
