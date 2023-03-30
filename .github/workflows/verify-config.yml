@@ -1,17 +1,14 @@
-name: Build Cars Service
+name: Build Config Service
 
 on:
-  push:
-    branches:
-      - main
-    paths:
-      - "cars-service/**"
   pull_request:
     types: [ opened, synchronize, reopened ]
+    paths:
+      - "config-service/**"
 
 jobs:
   build:
-    name: Build Cars Service
+    name: Build Config Service
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -28,5 +25,5 @@ jobs:
           java-version: 17
 
       - name: Build
-        run: ./gradlew :cars-service:build
+        run: ./gradlew :config-service:build
 

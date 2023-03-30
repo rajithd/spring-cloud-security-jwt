@@ -6,8 +6,6 @@ on:
       - main
     paths:
       - "auth-service/**"
-  pull_request:
-    types: [ opened, synchronize, reopened ]
 
 jobs:
   build:
