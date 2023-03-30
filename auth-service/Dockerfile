@@ -1,4 +1,5 @@
 FROM openjdk:17
+
 MAINTAINER Rajith Delantha <rajithgama@gmail.com>
 
 COPY build/libs/auth-service-0.0.1.jar /app/

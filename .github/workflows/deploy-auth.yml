@@ -6,10 +6,6 @@ on:
       - main
     paths:
       - "auth-service/**"
-  pull_request:
-    types: [ opened, synchronize, reopened ]
-    paths:
-      - "auth-service/**"
 
 jobs:
   build:
@@ -48,7 +44,7 @@ jobs:
           REGISTRY: ${{ steps.login-ecr.outputs.registry }}
           REPOSITORY: spring-cloud-security-jwt-auth-service
           IMAGE_TAG: latest
-          run: |
-            cd auth-service
-            docker build -t $REGISTRY/$REPOSITORY:$IMAGE_TAG .
-            docker push $REGISTRY/$REPOSITORY:$IMAGE_TAG
+        working-directory: auth-service
+        run: |
+          docker build -t $REGISTRY/$REPOSITORY:$IMAGE_TAG .
+          docker push $REGISTRY/$REPOSITORY:$IMAGE_TAG
