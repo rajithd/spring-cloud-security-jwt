@@ -1,4 +1,4 @@
-rootProject.name = "spring-cloud-jwt-aws-fargate"
+rootProject.name = "spring-cloud-security-jwt"
 include(":config-service")
 include(":auth-service")
 include(":gateway-service")

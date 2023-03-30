@@ -30,3 +30,6 @@ jobs:
       - name: Build
         run: ./gradlew :auth-service:build
 
+      - name: Build Docker Image
+        run: ./gradlew :auth-service:docker
+
